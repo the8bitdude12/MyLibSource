@@ -329,7 +329,7 @@ function Library:CreateWindow(WinName)
 		end
 		
 		function Functions:CreateLabel(Text)
-			Text = "NIL"
+			Text = Text or "NIL"
 			local TextLabelFrame = Instance.new("ImageLabel")
 			local Label = Instance.new("TextLabel")
 			
@@ -504,7 +504,7 @@ function Library:CreateWindow(WinName)
 			SliderText.Size = UDim2.new(0, 92, 0, 23)
 			SliderText.ZIndex = 2
 			SliderText.Font = Enum.Font.GothamBold
-			SliderText.Text = "Slider Name"
+			SliderText.Text = Text
 			SliderText.TextColor3 = Color3.fromRGB(255, 255, 255)
 			SliderText.TextScaled = true
 			SliderText.TextSize = 14.000
