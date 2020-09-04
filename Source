@@ -118,30 +118,6 @@ function Library:CreateWindow(WinName)
 	RainbowLine.SliceCenter = Rect.new(100, 100, 100, 100)
 	RainbowLine.SliceScale = 0.050
 	
-	local TweenService = game:GetService("TweenService")
-	local Frame = RainbowLine
-	
-	local function SimpleTween(Object, Length, Style, Direction, Properties)
-		local Tween = TweenService:Create(
-			Object,
-			TweenInfo.new(Length, Enum.EasingStyle[Style].Value, Enum.EasingDirection[Direction].Value),
-			Properties
-		)
-		
-		Tween:Play()
-		Tween.Completed:Wait()
-		Tween:Destroy()
-	end
-	
-	while true do
-		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(1, 0, 0) })
-		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(1, 1, 0) })
-		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(0, 1, 0) })
-		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(0, 1, 1) })
-		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(0, 0, 1) })
-		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(1, 0, 1) })
-	end
-	
 	MoveBar.Name = "MoveBar"
 	MoveBar.Parent = Frame
 	MoveBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -154,23 +130,6 @@ function Library:CreateWindow(WinName)
 	MoveBar.Text = ""
 	MoveBar.TextColor3 = Color3.fromRGB(0, 0, 0)
 	MoveBar.TextSize = 14.000
-	
-	local mouse = game:service'Players'.LocalPlayer:GetMouse()
-	local down = false
-	
-	MoveBar.MouseButton1Down:Connect(function()
-		local x = Frame.AbsolutePosition.X-mouse.X
-		local y = Frame.AbsolutePosition.Y-mouse.Y
-		down = true
-		while down do
-			Frame:TweenPosition(UDim2.new(0,x+mouse.X,0,y+mouse.Y),"Out","Sine",0.1,true)
-			game:service'RunService'.Stepped:Wait()
-		end
-	end)
-	
-	MoveBar.MouseButton1Up:Connect(function()
-		down = false
-	end)
 	
 	TabList.Name = "TabList"
 	TabList.Parent = Frame
@@ -587,6 +546,46 @@ function Library:CreateWindow(WinName)
 			end)
 		end
 		return Functions
+	end
+	local mouse = game:service'Players'.LocalPlayer:GetMouse()
+	local down = false
+	
+	MoveBar.MouseButton1Down:Connect(function()
+		local x = Frame.AbsolutePosition.X-mouse.X
+		local y = Frame.AbsolutePosition.Y-mouse.Y
+		down = true
+		while down do
+			Frame:TweenPosition(UDim2.new(0,x+mouse.X,0,y+mouse.Y),"Out","Sine",0.1,true)
+			game:service'RunService'.Stepped:Wait()
+		end
+	end)
+	
+	MoveBar.MouseButton1Up:Connect(function()
+		down = false
+	end)
+	
+	local TweenService = game:GetService("TweenService")
+	local Frame = RainbowLine
+	
+	local function SimpleTween(Object, Length, Style, Direction, Properties)
+		local Tween = TweenService:Create(
+			Object,
+			TweenInfo.new(Length, Enum.EasingStyle[Style].Value, Enum.EasingDirection[Direction].Value),
+			Properties
+		)
+		
+		Tween:Play()
+		Tween.Completed:Wait()
+		Tween:Destroy()
+	end
+	
+	while true do
+		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(1, 0, 0) })
+		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(1, 1, 0) })
+		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(0, 1, 0) })
+		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(0, 1, 1) })
+		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(0, 0, 1) })
+		SimpleTween(Frame, 1, "Linear", "Out", { ImageColor3 = Color3.new(1, 0, 1) })
 	end
 	return Tabs
 end
