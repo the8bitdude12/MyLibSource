@@ -13,7 +13,7 @@ end
 
 local Library = {}
 	
-function Library:CreateWindow(Name)
+function Library:CreateWindow(WinName)
 	local Darthhub = Instance.new("ScreenGui")
 	local Frame = Instance.new("ImageLabel")
 	local Frame_2 = Instance.new("ImageLabel")
@@ -70,7 +70,7 @@ function Library:CreateWindow(Name)
 	Name.Size = UDim2.new(0, 274, 0, 30)
 	Name.ZIndex = 2
 	Name.Font = Enum.Font.GothamBold
-	Name.Text = Name
+	Name.Text = WinName
 	Name.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Name.TextScaled = true
 	Name.TextSize = 14.000
