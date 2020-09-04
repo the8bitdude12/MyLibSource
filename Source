@@ -142,13 +142,13 @@ function Library:CreateWindow(WinName)
 	
 	local Tabs = {}
 	
-	function Tabs:CreateTab(Name)
+	function Tabs:CreateTab(TabN)
 		local PLAYER = Instance.new("TextButton")
 		local TabButtonFrame = Instance.new("ImageLabel")
 		local PLAYERTab = Instance.new("ScrollingFrame")
 		local UIGridLayout_2 = Instance.new("UIGridLayout")
 		
-		PLAYER.Name = "PLAYER"
+		PLAYER.Name = TabN
 		PLAYER.Parent = TabButtonList
 		PLAYER.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
 		PLAYER.BackgroundTransparency = 1.000
@@ -157,7 +157,7 @@ function Library:CreateWindow(WinName)
 		PLAYER.Size = UDim2.new(0, 69, 0, 24)
 		PLAYER.ZIndex = 4
 		PLAYER.Font = Enum.Font.GothamBold
-		PLAYER.Text = "PLAYER"
+		PLAYER.Text = TabN
 		PLAYER.TextColor3 = Color3.fromRGB(255, 255, 255)
 		PLAYER.TextScaled = true
 		PLAYER.TextSize = 14.000
@@ -180,7 +180,7 @@ function Library:CreateWindow(WinName)
 		TabButtonFrame.SliceCenter = Rect.new(100, 100, 100, 100)
 		TabButtonFrame.SliceScale = 0.050
 		
-		PLAYERTab.Name = "PLAYERTab"
+		PLAYERTab.Name = TabN.."Frame"
 		PLAYERTab.Parent = TabList
 		PLAYERTab.Active = true
 		PLAYERTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
